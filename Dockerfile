@@ -33,6 +33,15 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-pl
 
 # Set permissions
 RUN chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/app/public
+RUN mkdir -p storage/framework/sessions
+RUN mkdir -p storage/framework/views
+RUN mkdir -p storage/framework/cache
+RUN mkdir -p storage/logs
+
+# Create storage link
+RUN rm -rf public/storage
+RUN ln -s ../storage/app/public public/storage
 
 # Start command
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
