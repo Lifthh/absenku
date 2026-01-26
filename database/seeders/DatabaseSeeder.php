@@ -56,22 +56,33 @@ class DatabaseSeeder extends Seeder
             'status' => 'aktif',
         ]);
 
+        User::create([
+            'nip' => '123456789',
+            'nama' => 'Dzikri Pangestu',
+            'email' => 'dzikri.pangestu@absenku.com',
+            'password' => Hash::make('guru123'),
+            'role' => 'guru',
+            'jenis_kelamin' => 'L',
+            'jabatan' => 'Guru Informatika',
+            'status' => 'aktif',
+        ]);
+
         // Set Lokasi Sekolah Default (Jakarta sebagai contoh)
         LokasiSekolah::create([
-            'nama_sekolah' => 'SMA Negeri 1 Contoh',
-            'alamat' => 'Jl. Pendidikan No. 1, Jakarta',
-            'latitude' => -6.50670,
-            'longitude' => 107.61231,
-            // 'latitude' => -6.200000,
-            // 'longitude' => 106.816666,
-            'radius' => 10000,
+            'nama_sekolah' => 'SMA Negeri 1 Subang',
+            'alamat' => 'Jl. Arief Rahman Hakim No.35, Cigadung',
+            // 'latitude' => -6.50670,
+            // 'longitude' => 107.61231,
+            'latitude' => -6.55570,
+            'longitude' => 107.75980,
+            'radius' => 100,
         ]);
 
         // Set Jam Kerja Default
         JamKerja::create([
             'jam_masuk' => '06:30:00',
             'jam_pulang' => '15:00:00',
-            'batas_absen_masuk' => '23:00:00',
+            'batas_absen_masuk' => '12:00:00',
             'batas_absen_pulang' => '22:00:00',
         ]);
     }

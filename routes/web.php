@@ -21,9 +21,33 @@ use App\Http\Controllers\Admin\LaporanController as AdminLaporanController;
 | Public Routes
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Redirect utama setelah login & session refresh (berdasarkan role)
+|--------------------------------------------------------------------------
+*/
+Route::get('/home', function () {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
+
+    if (auth()->user()->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+
+    if (auth()->user()->role === 'guru') {
+        return redirect()->route('guru.dashboard');
+    }
+
+    abort(403);
+});
+
 
 /*
 |--------------------------------------------------------------------------
