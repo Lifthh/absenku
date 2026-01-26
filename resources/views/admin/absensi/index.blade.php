@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('title', 'Data Absensi')
-@section('subtitle', 'Rekap absensi tanggal {{ $tanggal->format("d M Y") }}')
+@section('subtitle', "Rekap absensi tanggal " . $tanggal->format('d M Y'))
+
 
 @section('content')
 <div class="space-y-6">
